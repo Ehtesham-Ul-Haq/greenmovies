@@ -7,9 +7,14 @@ const LocalStrategy = require('passport-local').Strategy; // Ensure to require t
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const User = require('./models/userModel'); // Require your User model
+const cors = require('cors');
 
 // Initialize Express app
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors());
+
 
 // Middleware
 app.use(bodyParser.json());
