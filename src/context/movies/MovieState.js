@@ -2,7 +2,9 @@ import { useState, useReducer } from "react";
 import MovieContext from "./movieContext";
 import MovieReducer from './MovieReducer';
 import {
-  GET_MOVIE
+  GET_MOVIE,
+  GET_DIRECTORS,
+  GET_GENRES
 } from '../types';
 
 const MovieState = (props) => {
@@ -13,6 +15,8 @@ const MovieState = (props) => {
   const initialState = {
     movies: [],
     currentMovie: null,
+    directors: [],
+    genres: []
   };
 
   const [state, dispatch] = useReducer(MovieReducer, initialState);
@@ -104,6 +108,8 @@ const MovieState = (props) => {
       console.error('Error deleting movie:', error);
     }
   };
+
+  //  update movie
   
   const updateMovie = async ( id, title, director, releaseYear, genre, image, description, clickToWatch ) => {
     try {
@@ -131,9 +137,103 @@ const MovieState = (props) => {
       console.error('Error updating movie:', error);
     }
   };
+
+
+
+  // get movies by genre
+  const getMoviesByGenre = async (genre) => {
+    try {
+      const response = await fetch(`${host}/movies/getmoviebygenre/${genre}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch movies by genre');
+      }
+      const movies = await response.json();
+      setMovies(movies);
+    } catch (error) {
+      console.error('Error fetching movies by genre:', error);
+    }
+  };
+
+  // get movies by year
+  const getMoviesByYear = async (releaseYear) => {
+    try {
+      const response = await fetch(`${host}/movies/getmoviebyyear/${releaseYear}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch movies by year');
+      }
+      const movies = await response.json();
+      setMovies(movies);
+    } catch (error) {
+      console.error('Error fetching movies by year:', error);
+    }
+  };
+
+  // get movies by director
+  const getMoviesByDirector = async (director) => {
+    try {
+      const response = await fetch(`${host}/movies/getmoviebydirector/${director}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch movies by director');
+      }
+      const movies = await response.json();
+      setMovies(movies);
+    } catch (error) {
+      console.error('Error fetching movies by director:', error);
+    }
+  };
+
+  // Fetch directors
+  const getDirectors = async () => {
+    try {
+      const response = await fetch(`${host}/movies/directors`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch directors');
+      }
+      const directors = await response.json();
+      dispatch({
+        type: GET_DIRECTORS,
+        payload: directors,
+      });
+    } catch (error) {
+      console.error('Error fetching directors:', error);
+    }
+  };
+  
+    // Fetch genre
+    const getGenres = async () => {
+      try {
+        const response = await fetch(`${host}/movies/genres`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch genres');
+        }
+        const genres = await response.json();
+        dispatch({
+          type: GET_GENRES,
+          payload: genres,
+        });
+      } catch (error) {
+        console.error('Error fetching genres:', error);
+      }
+    };
+  
   
   return (
-    <MovieContext.Provider value={{ movies,getMovie, addMovie, deleteMovie, updateMovie, getMovies, currentMovie: state.currentMovie }}>
+    <MovieContext.Provider value={{ movies, getMovie, addMovie, deleteMovie, updateMovie, getMovies, getMoviesByGenre, getMoviesByYear, getMoviesByDirector, getDirectors, getGenres, genres: state.genres, directors: state.directors, currentMovie: state.currentMovie }}>
       {props.children}
     </MovieContext.Provider>
   );

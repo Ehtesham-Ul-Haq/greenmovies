@@ -49,18 +49,9 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="nav-links">
             <li><Link className={`${location.pathname === "/" ? "active" : ""}`} to="/">Home</Link></li>
-            <li className="nav-item dropdown">
-              <Link className={`nav-link dropdown-toggle ${location.pathname === "/" ? "active" : ""}`} to="/Category" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Category
-              </Link>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><Link className={`dropdown-item ${location.pathname === "/category/action" ? "active" : ""}`} to="/category/action">Action</Link></li>
-                <li><Link className={`dropdown-item ${location.pathname === "/category/comedy" ? "active" : ""}`} to="/category/comedy">Comedy</Link></li>
-                <li><Link className={`dropdown-item ${location.pathname === "/category/drama" ? "active" : ""}`} to="/category/drama">Drama</Link></li>
-                {/* Add more categories as needed */}
-              </ul>
-            </li>
+            <li><Link className={`${location.pathname === "/Categories" ? "active" : ""}`} to="/Categories">Category</Link></li>
             <li><Link className={`${location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link></li>
+            <li><Link className={`${location.pathname === "/FAQ" ? "active" : ""}`} to="/FAQ">FAQ</Link></li>
             {isAdmin && <li><Link className={`${location.pathname === "/admin" ? "active" : ""}`} to="/admin">Admin Panel</Link></li>}
           </ul>
 

@@ -7,13 +7,15 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import NotFound from './components/NotFound';
-import MovieState from './context/movies/MovieState';
 import './App.css'; // Import CSS file for global styles
 import Footer from './components/Footer';
 import About from './components/About';
 import MoviePage from './components/MoviePage';
 import Alert from "./components/Alert";
 import AdminPanel from './components/AdminPanel';
+import Category from './components/Category';
+import CategoryMovies from './components/CategoryMovies';
+import FAQ from './components/FAQ';
 
 const App = () => {
 
@@ -31,7 +33,6 @@ const App = () => {
 
   return (
     <>
-    <MovieState>
     <BrowserRouter>
       <div className="App">
         <Navbar />
@@ -45,6 +46,9 @@ const App = () => {
             <Route exact path="/about" element={<About  showAlert={showAlert}/>} />
             <Route exact path="/moviepage/:id" element={<MoviePage  showAlert={showAlert}/>} />
             <Route exact path="/admin" element={<AdminPanel  showAlert={showAlert}/>} />
+            <Route exact path="/Categories" element={<Category  showAlert={showAlert}/>} />
+            <Route exact path="/categorymovies/:type/:value" element={<CategoryMovies  showAlert={showAlert}/>} />
+            <Route exact path="/FAQ" element={<FAQ  showAlert={showAlert}/>} />
             
             
             
@@ -53,7 +57,6 @@ const App = () => {
         <Footer />
       </div>
     </BrowserRouter>
-    </MovieState>
     </>
   );
 };

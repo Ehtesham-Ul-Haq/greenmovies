@@ -1,58 +1,38 @@
-import React from 'react'
+// src/components/About.js
+
+import React from 'react';
 
 const About = () => {
+  return (
+    <div className="container">
+      <div className="card shadow-lg p-4">
+        <h1 className="text-center mb-5">About Green Movies</h1>
+        <p className="lead">
+          Welcome to Green Movies, your ultimate destination for exploring and discovering movies from various renowned movie industries around the world. We aim to provide a comprehensive collection of movies, including those from Bollywood, Hollywood, and more.
+        </p>
+        <h2 className="mt-4">Industries Featured:</h2>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">Bollywood</li>
+          <li className="list-group-item">Hollywood</li>
+          <li className="list-group-item">Tollywood</li>
+          <li className="list-group-item">Kollywood</li>
+          <li className="list-group-item">Mollywood</li>
+          <li className="list-group-item">Sandalwood</li>
+          <li className="list-group-item">Pollywood</li>
+          <li className="list-group-item">Chinese Cinema</li>
+          <li className="list-group-item">Japanese Cinema</li>
+          <li className="list-group-item">Korean Cinema</li>
+          {/* Add more industries as needed */}
+        </ul>
+        <p className="mt-4">
+          Our platform strives to offer a user-friendly experience, allowing you to browse movies by genre, release year, director, and more. Whether you're a casual movie enthusiast or a dedicated cinephile, Green Movies caters to all tastes and preferences.
+        </p>
+        <p>
+          Stay tuned for updates and new additions to our extensive movie database. Start exploring today!
+        </p>
+      </div>
+    </div>
+  );
+};
 
-    const myStyle = {
-        color: 'black',
-        backgroundColor: 'white',
-        border: '1px solid black'
-    };
-
-
-    return (
-        <div className='container'>
-            <h2>About Us</h2>
-            <div className="accordion" id="accordionExample">
-                <div className="accordion-item" style={myStyle}>
-                    <h2 className="accordion-header">
-                        <button className="accordion-button" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <strong>Accordion Item #1</strong>
-                        </button>
-                    </h2>
-                    <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                        <div className="accordion-body" >
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-                <div className="accordion-item" style={myStyle}>
-                    <h2 className="accordion-header">
-                        <button className="accordion-button collapsed" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <strong>Accordion Item #2</strong>
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div className="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-                <div className="accordion-item" style={myStyle}>
-                    <h2 className="accordion-header">
-                        <button className="accordion-button collapsed" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <strong>Accordion Item #3</strong>
-                        </button>
-                    </h2>
-                    <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div className="accordion-body" >
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    )
-}
-
-export default About
+export default About;

@@ -71,4 +71,62 @@ router.delete('/deleteamovie/:_id', async (req, res) => {
     }
 });
 
+// Get movies by genre
+router.get('/getmoviebygenre/:genre', async (req, res) => {
+    try {
+        const movies = await Movie.find({ genre: req.params.genre });
+        res.json(movies);
+    } catch (err) {
+        console.error('Error getting movies by genre:', err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+// Get movies by year
+router.get('/getmoviebyyear/:releaseYear', async (req, res) => {
+    try {
+        const movies = await Movie.find({ releaseYear: req.params.releaseYear });
+        res.json(movies);
+    } catch (err) {
+        console.error('Error getting movies by year:', err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+// Get movies by director
+router.get('/getmoviebydirector/:director', async (req, res) => {
+    try {
+        const movies = await Movie.find({ director: req.params.director });
+        res.json(movies);
+    } catch (err) {
+        console.error('Error getting movies by director:', err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+// Get unique directors
+router.get('/directors', async (req, res) => {
+    try {
+      const directors = await Movie.distinct('director');
+      res.json(directors);
+    } catch (err) {
+      console.error('Error fetching directors:', err);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+
+// Get unique genres
+router.get('/genres', async (req, res) => {
+    try {
+      const genres = await Movie.distinct('genre');
+      res.json(genres);
+    } catch (err) {
+      console.error('Error fetching genres:', err);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
 module.exports = router;
